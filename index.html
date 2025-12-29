@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIPA - Global Intellectual Property Advisor</title>
+    <meta name="description" content="GIPA is a global educational and advisory platform dedicated to Intellectual Property Rights (IPR) education, including copyrights, trademarks, patents, and digital IP.">
+    <meta name="keywords" content="intellectual property, IPR, copyright, trademark, patent, trade secrets, industrial design, digital IP, legal education, IP fees calculator">
+    <meta name="author" content="GIPA - Global Intellectual Property Advisor">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Light/Dark Mode */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d5aa0;
+            --accent-color: #4a6fa5;
+            --light-color: #f8f9fa;
+            --dark-color: #121212;
+            --text-color: #333333;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --radius: 8px;
+            --max-width: 1200px;
+        }
+
+        .dark-mode {
+            --primary-color: #2d3e50;
+            --secondary-color: #4a7dff;
+            --accent-color: #5d8aff;
+            --light-color: #1e2a3a;
+            --dark-color: #0d1117;
+            --text-color: #e8eaed;
+            --text-light: #b0b7c3;
+            --border-color: #2d3748;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: var(--light-color);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 2rem;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background-color: var(--light-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(45, 90, 160, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--light-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            margin-top: 0.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1001;
+            display: none;
+        }
+
+        .dark-mode .search-results {
+            background-color: var(--dark-color);
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-result-item:hover {
+            background-color: rgba(45, 90, 160, 0.1);
+        }
+
+        .search-result-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .search-result-item p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .search-result-item .result-type {
+            display: inline-block;
+            background-color: rgba(45, 90, 160, 0.1);
+            color: var(--secondary-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a365d"/><path d="M0,0 L100,100" stroke="%232d5aa0" stroke-width="1"/><path d="M100,0 L0,100" stroke="%232d5aa0" stroke-width="1"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* IP Categories Section */
+        .ip-categories {
+            background-color: var(--light-color);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .dark-mode .category-card {
+            background-color: var(--dark-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            height: 70px;
+            width: 70px;
+            background-color: rgba(45, 90, 160, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+        }
+
+        .category-card h3 {
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .category-card p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            background-color: rgba(45, 90, 160, 0.05);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .link-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--secondary-color);
+            cursor: pointer;
+        }
+
+        .dark-mode .link-card {
+            background-color: var(--dark-color);
+        }
+
+        .link-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .link-card h3 {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .link-card i {
+            color: var(--secondary-color);
+        }
+
+        .link-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Additional IP Pages Section */
+        .ip-pages {
+            background-color: var(--light-color);
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .page-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .dark-mode .page-card {
+            background-color: var(--dark-color);
+        }
+
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .page-header h3 {
+            color: white;
+            margin-bottom: 0;
+        }
+
+        .page-content {
+            padding: 1.5rem;
+        }
+
+        .page-section {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .page-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .page-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .page-section p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-link {
+            display: inline-block;
+            color: var(--secondary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+        }
+
+        .page-link i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .page-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Fee Calculator Toggle */
+        .calculator-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .calculator-toggle:hover {
+            background-color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .calculator-toggle.active {
+            background-color: #d32f2f;
+        }
+
+        /* Fee Calculator Modal */
+        .calculator-modal {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 400px;
+            max-width: 90vw;
+            background-color: var(--light-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            padding: 1.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .dark-mode .calculator-modal {
+            background-color: var(--dark-color);
+        }
+
+        .calculator-modal.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .calculator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calculator-header h3 {
+            margin-bottom: 0;
+            color: var(--primary-color);
+        }
+
+        .calculator-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .calculator-form {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-select, .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background-color: var(--light-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .dark-mode .form-select, .dark-mode .form-input {
+            background-color: var(--dark-color);
+        }
+
+        .form-select:focus, .form-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(45, 90, 160, 0.1);
+        }
+
+        .calculator-result {
+            background-color: rgba(45, 90, 160, 0.1);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .calculator-result h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .fee-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .fee-details {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .fee-breakdown {
+            margin-top: 1rem;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo .logo-img {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .footer-logo .logo-text {
+            color: white;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--light-color);
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-30px);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: white;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--secondary-color);
+        }
+
+        .modal-content {
+            padding: 2rem;
+        }
+
+        .modal-content h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-content p, .modal-content ul, .modal-content ol {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content ul, .modal-content ol {
+            padding-left: 1.5rem;
+        }
+
+        .legal-notice-box {
+            background-color: rgba(255, 0, 0, 0.05);
+            border-left: 4px solid #d32f2f;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .copyright-notice-box {
+            background-color: rgba(26, 54, 93, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .dark-mode .contact-card {
+            background-color: var(--dark-color);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .search-container {
+                margin-left: 1rem;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: var(--light-color);
+                width: 100%;
+                text-align: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .search-container {
+                order: 3;
+                width: 100%;
+                max-width: 100%;
+                margin: 1rem 0 0 0;
+                display: none;
+            }
+
+            .search-container.mobile-visible {
+                display: flex;
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .modal {
+                width: 95%;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .calculator-modal {
+                width: 90vw;
+                right: 5vw;
+            }
+
+            .calculator-toggle {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header-container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .category-grid,
+            .links-grid,
+            .pages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility Improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        :focus {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+
+        /* Animation for page transitions */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Highlight search results */
+        .highlight {
+            background-color: rgba(255, 255, 0, 0.3);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">G</div>
+                <div class="logo-text">GIPA</div>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#ip-categories" class="nav-link">IP Categories</a>
+                <a href="#quick-links" class="nav-link">Quick Links</a>
+                <a href="#ip-pages" class="nav-link">IP Guides</a>
+                <div class="search-container mobile-visible">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Search IP topics...">
+                        <i class="fas fa-search search-icon"></i>
+                        <div class="search-results"></div>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search IP topics...">
+                    <i class="fas fa-search search-icon"></i>
+                    <div class="search-results"></div>
+                </div>
+            </div>
+            
+            <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Global Intellectual Property Advisor</h1>
+            <p>Your trusted educational platform for comprehensive Intellectual Property Rights knowledge. Empowering creators, innovators, and businesses with authoritative IP guidance worldwide.</p>
+            <div class="hero-btns">
+                <a href="#ip-categories" class="btn">Explore IP Categories</a>
+                <a href="#quick-links" class="btn btn-outline">Quick Links</a>
+                <a href="#ip-pages" class="btn btn-outline">IP Guides</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- IP Categories Section -->
+    <section id="ip-categories" class="section ip-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Intellectual Property Categories</h2>
+                <p>Explore the different types of intellectual property rights and their protections</p>
+            </div>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-copyright"></i>
+                    </div>
+                    <h3>Copyright Laws</h3>
+                    <p>Protection for original works of authorship including literary, dramatic, musical, and artistic works. Covers both published and unpublished works.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-trademark"></i>
+                    </div>
+                    <h3>Trademarks</h3>
+                    <p>Symbols, names, and slogans used to identify goods or services. Protects brand identity and prevents consumer confusion in the marketplace.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Patents</h3>
+                    <p>Exclusive rights granted for inventions, providing the patent holder the right to exclude others from making, using, or selling the invention.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Industrial Designs</h3>
+                    <p>Protection for the ornamental or aesthetic aspect of an article. A design may consist of three-dimensional or two-dimensional features.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Trade Secrets</h3>
+                    <p>Confidential business information that provides a competitive edge. Protection lasts as long as the information remains secret.</p>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Digital IP</h3>
+                    <p>Protection for software, AI-generated content, NFTs, domain names, and digital assets in the evolving technological landscape.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section id="quick-links" class="section quick-links">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quick Links</h2>
+                <p>Essential pages for comprehensive understanding of GIPA's services and policies</p>
+            </div>
+            
+            <div class="links-grid">
+                <div class="link-card" data-modal="about">
+                    <h3><i class="fas fa-info-circle"></i> About Us</h3>
+                    <p>Learn about GIPA's mission to spread IP awareness globally and our role as an educational platform.</p>
+                </div>
+                
+                <div class="link-card" data-modal="contact">
+                    <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+                    <p>Get in touch with our team. Connect via LinkedIn or email for inquiries and consultations.</p>
+                </div>
+                
+                <div class="link-card" data-modal="legal">
+                    <h3><i class="fas fa-gavel"></i> Legal Notice</h3>
+                    <p>Important legal disclaimers regarding the information provided on this platform.</p>
+                </div>
+                
+                <div class="link-card" data-modal="privacy">
+                    <h3><i class="fas fa-shield-alt"></i> Privacy Policy</h3>
+                    <p>Our commitment to user privacy, data collection principles, and compliance with global standards.</p>
+                </div>
+                
+                <div class="link-card" data-modal="terms">
+                    <h3><i class="fas fa-file-contract"></i> Terms & Conditions</h3>
+                    <p>Rules for website usage, intellectual property restrictions, and user responsibilities.</p>
+                </div>
+                
+                <div class="link-card" data-modal="copyright">
+                    <h3><i class="fas fa-copyright"></i> Copyright Notice</h3>
+                    <p>Information about the proprietary content on this website and trademark protections.</p>
+                </div>
+                
+                <div class="link-card" data-modal="government">
+                    <h3><i class="fas fa-landmark"></i> Government Permission</h3>
+                    <p>Statement regarding compliance with applicable laws and regulatory alignment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional IP Pages Section -->
+    <section id="ip-pages" class="section ip-pages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive IP Guides</h2>
+                <p>Detailed guides on specialized intellectual property topics for creators, developers, and businesses</p>
+            </div>
+            
+            <div class="pages-grid">
+                <!-- Content Protection Guide -->
+                <div class="page-card">
+                    <div class="page-header">
+                        <h3>Content Protection Guide</h3>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-section">
+                            <h4>Copyright Registration</h4>
+                            <p>Learn about the formal process of registering your creative works with copyright offices to establish legal evidence of ownership and enable statutory damages in infringement cases.</p>
+                            <div class="page-link" data-modal="content-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Content ID Setup</h4>
+                            <p>Understand how automated systems like YouTube's Content ID work to identify and manage copyrighted material across digital platforms.</p>
+                            <div class="page-link" data-modal="content-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>DMCA Takedown</h4>
+                            <p>Step-by-step guide to filing DMCA takedown notices to remove infringing content from websites and online platforms.</p>
+                            <div class="page-link" data-modal="content-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Licensing</h4>
+                            <p>Comprehensive overview of different licensing models for creative works, including exclusive, non-exclusive, and Creative Commons licenses.</p>
+                            <div class="page-link" data-modal="content-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software & Open Source -->
+                <div class="page-card">
+                    <div class="page-header">
+                        <h3>Software & Open Source</h3>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-section">
+                            <h4>Right License Selection</h4>
+                            <p>Guidance on choosing appropriate software licenses (MIT, GPL, Apache, etc.) based on your project goals and distribution model.</p>
+                            <div class="page-link" data-modal="software-open-source">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Software Patent vs Copyright</h4>
+                            <p>Critical differences between patenting software algorithms versus copyrighting source code, and when each is appropriate.</p>
+                            <div class="page-link" data-modal="software-open-source">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>GitHub Best Practices</h4>
+                            <p>How to properly manage intellectual property when using GitHub, including license files, contribution agreements, and repository settings.</p>
+                            <div class="page-link" data-modal="software-open-source">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Trade Secrets</h4>
+                            <p>Protecting proprietary algorithms, formulas, and processes as trade secrets rather than through patents or copyrights.</p>
+                            <div class="page-link" data-modal="software-open-source">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Security -->
+                <div class="page-card">
+                    <div class="page-header">
+                        <h3>Brand Security</h3>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-section">
+                            <h4>Trademark Search</h4>
+                            <p>How to conduct comprehensive trademark searches to avoid infringement and identify available marks for your brand.</p>
+                            <div class="page-link" data-modal="brand-security">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>The "TM" vs "®" Rule</h4>
+                            <p>When to use TM (trademark) versus ® (registered trademark) symbols and the legal implications of each.</p>
+                            <div class="page-link" data-modal="brand-security">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Class Selection</h4>
+                            <p>Understanding the Nice Classification system for selecting appropriate trademark classes for goods and services.</p>
+                            <div class="page-link" data-modal="brand-security">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Geographical Indication (GI)</h4>
+                            <p>Protecting products that have a specific geographical origin and possess qualities or reputation due to that origin.</p>
+                            <div class="page-link" data-modal="brand-security">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Protection -->
+                <div class="page-card">
+                    <div class="page-header">
+                        <h3>Design Protection</h3>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-section">
+                            <h4>Industrial Design Act</h4>
+                            <p>Overview of legal frameworks protecting the visual design of objects that are not purely utilitarian.</p>
+                            <div class="page-link" data-modal="design-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Unregistered Design Rights</h4>
+                            <p>Understanding automatic protection for designs without formal registration in certain jurisdictions.</p>
+                            <div class="page-link" data-modal="design-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Fast-track Registration</h4>
+                            <p>Expedited design registration processes available in various countries for quicker protection.</p>
+                            <div class="page-link" data-modal="design-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Design Infringement</h4>
+                            <p>How to identify and prove design infringement, including the "informed user" test.</p>
+                            <div class="page-link" data-modal="design-protection">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agricultural IP -->
+                <div class="page-card">
+                    <div class="page-header">
+                        <h3>Agricultural IP</h3>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-section">
+                            <h4>Plant Variety Protection</h4>
+                            <p>Legal protection for new varieties of plants, including requirements for distinctiveness, uniformity, and stability.</p>
+                            <div class="page-link" data-modal="agricultural-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Geographical Indications (GI Tag)</h4>
+                            <p>Protection for agricultural products with specific geographical origins and qualities (e.g., Champagne, Darjeeling Tea).</p>
+                            <div class="page-link" data-modal="agricultural-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Traditional Knowledge</h4>
+                            <p>Protecting indigenous and local community knowledge related to biodiversity and traditional practices.</p>
+                            <div class="page-link" data-modal="agricultural-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Seed Patents</h4>
+                            <p>Controversial area of IP involving patenting genetically modified seeds and plant varieties.</p>
+                            <div class="page-link" data-modal="agricultural-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic IP -->
+                <div class="page-card">
+                    <div class="page-header">
+                        <h3>Academic IP</h3>
+                    </div>
+                    <div class="page-content">
+                        <div class="page-section">
+                            <h4>Plagiarism vs Copyright</h4>
+                            <p>Understanding the differences between academic plagiarism and copyright infringement in scholarly works.</p>
+                            <div class="page-link" data-modal="academic-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Before Publishing Patent</h4>
+                            <p>Why and how to file for patents before publishing research findings to avoid losing patent rights.</p>
+                            <div class="page-link" data-modal="academic-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>University Rights</h4>
+                            <p>Understanding institutional IP policies, faculty ownership rights, and technology transfer offices.</p>
+                            <div class="page-link" data-modal="academic-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <div class="page-section">
+                            <h4>Open Access Publishing</h4>
+                            <p>IP considerations when publishing in open access journals versus traditional subscription-based journals.</p>
+                            <div class="page-link" data-modal="academic-ip">Read More <i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-img">G</div>
+                        <div class="logo-text">GIPA</div>
+                    </div>
+                    <p>Global Intellectual Property Advisor is a premier educational platform dedicated to disseminating authoritative knowledge about Intellectual Property Rights worldwide.</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/nikhil-kumar-31b914341" aria-label="LinkedIn" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:kimitechnology.co.vr@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#ip-categories">IP Categories</a></li>
+                        <li><a href="#quick-links">Quick Links</a></li>
+                        <li><a href="#ip-pages">IP Guides</a></li>
+                        <li><a href="#" data-modal="about">About Us</a></li>
+                        <li><a href="#" data-modal="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> kimitechnology.co.vr@gmail.com</p>
+                    <p><i class="fas fa-building"></i> Operated under DVNKC Inc.</p>
+                    <p><i class="fas fa-globe"></i> Global Intellectual Property Advisor</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 GIPA – Global Intellectual Property Advisor. All Rights Reserved.</p>
+                <p>GIPA is a proprietary brand of Kimi Technologies, operated under DVNKC Inc. (Digital Virus Negotiation Korean Company Incorporated).</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fee Calculator Toggle -->
+    <div class="calculator-toggle" id="calculatorToggle">
+        <i class="fas fa-calculator"></i>
+    </div>
+
+    <!-- Fee Calculator Modal -->
+    <div class="calculator-modal" id="calculatorModal">
+        <div class="calculator-header">
+            <h3>IP Fee Calculator</h3>
+            <button class="calculator-close" id="calculatorClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="calculator-form">
+            <div class="form-group">
+                <label for="countrySelect">Select Country</label>
+                <select id="countrySelect" class="form-select">
+                    <option value="us">United States (USPTO)</option>
+                    <option value="eu">European Union (EUIPO)</option>
+                    <option value="uk">United Kingdom (UKIPO)</option>
+                    <option value="in">India (IPO)</option>
+                    <option value="ca">Canada (CIPO)</option>
+                    <option value="au">Australia (IP Australia)</option>
+                    <option value="jp">Japan (JPO)</option>
+                    <option value="cn">China (CNIPA)</option>
+                    <option value="kr">South Korea (KIPO)</option>
+                    <option value="br">Brazil (INPI)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ipTypeSelect">IP Type</label>
+                <select id="ipTypeSelect" class="form-select">
+                    <option value="trademark">Trademark Registration</option>
+                    <option value="patent">Patent Application</option>
+                    <option value="design">Design Registration</option>
+                    <option value="copyright">Copyright Registration</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="applicantType">Applicant Type</label>
+                <select id="applicantType" class="form-select">
+                    <option value="individual">Individual/Small Entity</option>
+                    <option value="large">Large Entity</option>
+                    <option value="micro">Micro Entity (US only)</option>
+                </select>
+            </div>
+            <button class="btn" id="calculateFees" style="width: 100%;">Calculate Fees</button>
+        </div>
+        <div class="calculator-result" id="calculatorResult" style="display: none;">
+            <h4>Estimated Fees</h4>
+            <div class="fee-amount" id="feeAmount">$0.00</div>
+            <div class="fee-details" id="feeDetails"></div>
+            <div class="fee-breakdown" id="feeBreakdown"></div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <!-- Modal content will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // DOM Elements
+        const themeToggle = document.querySelector('.theme-toggle');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const body = document.body;
+        const navLinks = document.querySelectorAll('.nav-link');
+        const linkCards = document.querySelectorAll('.link-card');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modal = document.getElementById('modal');
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+        const calculatorToggle = document.getElementById('calculatorToggle');
+        const calculatorModal = document.getElementById('calculatorModal');
+        const calculatorClose = document.getElementById('calculatorClose');
+        const calculateFeesBtn = document.getElementById('calculateFees');
+        const calculatorResult = document.getElementById('calculatorResult');
+        const pageLinks = document.querySelectorAll('.page-link');
+        
+        // Search data for all content
+        const searchData = [
+            // IP Categories
+            { type: 'category', title: 'Copyright Laws', content: 'Protection for original works of authorship including literary, dramatic, musical, and artistic works.', modal: null },
+            { type: 'category', title: 'Trademarks', content: 'Symbols, names, and slogans used to identify goods or services. Protects brand identity.', modal: null },
+            { type: 'category', title: 'Patents', content: 'Exclusive rights granted for inventions, providing the patent holder exclusive rights.', modal: null },
+            { type: 'category', title: 'Industrial Designs', content: 'Protection for the ornamental or aesthetic aspect of an article.', modal: null },
+            { type: 'category', title: 'Trade Secrets', content: 'Confidential business information that provides a competitive edge.', modal: null },
+            { type: 'category', title: 'Digital IP', content: 'Protection for software, AI-generated content, NFTs, domain names, and digital assets.', modal: null },
+            
+            // Quick Links
+            { type: 'quick-link', title: 'About Us', content: 'Learn about GIPA\'s mission to spread IP awareness globally.', modal: 'about' },
+            { type: 'quick-link', title: 'Contact Us', content: 'Get in touch with our team via LinkedIn or email.', modal: 'contact' },
+            { type: 'quick-link', title: 'Legal Notice', content: 'Important legal disclaimers regarding information on this platform.', modal: 'legal' },
+            { type: 'quick-link', title: 'Privacy Policy', content: 'Our commitment to user privacy and data protection.', modal: 'privacy' },
+            { type: 'quick-link', title: 'Terms & Conditions', content: 'Rules for website usage and user responsibilities.', modal: 'terms' },
+            { type: 'quick-link', title: 'Copyright Notice', content: 'Information about proprietary content and trademark protections.', modal: 'copyright' },
+            { type: 'quick-link', title: 'Government Permission', content: 'Statement regarding compliance with applicable laws.', modal: 'government' },
+            
+            // IP Pages
+            { type: 'guide', title: 'Content Protection Guide', content: 'Copyright registration, Content ID setup, DMCA takedown, Licensing.', modal: 'content-protection' },
+            { type: 'guide', title: 'Software & Open Source', content: 'License selection, software patents, GitHub practices, trade secrets.', modal: 'software-open-source' },
+            { type: 'guide', title: 'Brand Security', content: 'Trademark search, TM vs ®, class selection, geographical indication.', modal: 'brand-security' },
+            { type: 'guide', title: 'Design Protection', content: 'Industrial design act, unregistered rights, fast-track registration.', modal: 'design-protection' },
+            { type: 'guide', title: 'Agricultural IP', content: 'Plant variety protection, GI tags, traditional knowledge, seed patents.', modal: 'agricultural-ip' },
+            { type: 'guide', title: 'Academic IP', content: 'Plagiarism vs copyright, pre-publishing patents, university rights.', modal: 'academic-ip' },
+            
+            // Specific topics from pages
+            { type: 'topic', title: 'Copyright Registration', content: 'Formal process of registering creative works with copyright offices.', modal: 'content-protection' },
+            { type: 'topic', title: 'DMCA Takedown', content: 'Step-by-step guide to filing DMCA takedown notices.', modal: 'content-protection' },
+            { type: 'topic', title: 'Software License Selection', content: 'Choosing appropriate software licenses based on project goals.', modal: 'software-open-source' },
+            { type: 'topic', title: 'Trademark Search', content: 'How to conduct comprehensive trademark searches.', modal: 'brand-security' },
+            { type: 'topic', title: 'Plant Variety Protection', content: 'Legal protection for new varieties of plants.', modal: 'agricultural-ip' },
+            { type: 'topic', title: 'Plagiarism vs Copyright', content: 'Differences between academic plagiarism and copyright infringement.', modal: 'academic-ip' },
+            { type: 'topic', title: 'Fee Calculator', content: 'Calculate IP registration fees for different countries.', modal: 'calculator' }
+        ];
+
+        // Fee calculator data
+        const feeData = {
+            us: {
+                trademark: { individual: 350, large: 700, micro: 175 },
+                patent: { individual: 800, large: 1600, micro: 400 },
+                design: { individual: 250, large: 500, micro: 125 },
+                copyright: { individual: 45, large: 65, micro: 45 }
+            },
+            eu: {
+                trademark: { individual: 850, large: 1700, micro: 850 },
+                patent: { individual: 1200, large: 2400, micro: 1200 },
+                design: { individual: 350, large: 700, micro: 350 },
+                copyright: { individual: 0, large: 0, micro: 0 }
+            },
+            uk: {
+                trademark: { individual: 200, large: 400, micro: 200 },
+                patent: { individual: 600, large: 1200, micro: 600 },
+                design: { individual: 50, large: 100, micro: 50 },
+                copyright: { individual: 0, large: 0, micro: 0 }
+            },
+            in: {
+                trademark: { individual: 45, large: 90, micro: 45 },
+                patent: { individual: 60, large: 120, micro: 60 },
+                design: { individual: 20, large: 40, micro: 20 },
+                copyright: { individual: 5, large: 10, micro: 5 }
+            },
+            ca: {
+                trademark: { individual: 330, large: 660, micro: 330 },
+                patent: { individual: 400, large: 800, micro: 400 },
+                design: { individual: 350, large: 700, micro: 350 },
+                copyright: { individual: 50, large: 100, micro: 50 }
+            }
+        };
+
+        // Modal content data
+        const modalContents = {
+            about: {
+                title: "About Us",
+                content: `
+                    <h3>Our Mission</h3>
+                    <p>GIPA (Global Intellectual Property Advisor) is dedicated to spreading awareness and education about Intellectual Property Rights (IPR) across the globe. Our mission is to empower individuals, creators, startups, and businesses with comprehensive, accessible, and authoritative knowledge about IP protection.</p>
+                    
+                    <h3>Our Role</h3>
+                    <p>As a premier educational and advisory platform, GIPA serves as a bridge between complex legal frameworks and practical understanding. We translate intricate IP laws into digestible information suitable for students, creators, startups, and professionals alike.</p>
+                    
+                    <h3>Association</h3>
+                    <p>GIPA is an initiative developed in association with <strong>Kimi Technologies</strong> and operates under <strong>DVNKC Inc. (Digital Virus Negotiation Korean Company Incorporated)</strong>. This partnership combines technological innovation with legal expertise to create a robust educational platform.</p>
+                    
+                    <h3>Our Commitment</h3>
+                    <p>We are committed to:</p>
+                    <ul>
+                        <li><strong>Transparency:</strong> Providing clear, accurate, and up-to-date information about IP laws and protections</li>
+                        <li><strong>Education:</strong> Making IP knowledge accessible to everyone regardless of their legal background</li>
+                        <li><strong>Digital Innovation:</strong> Leveraging technology to deliver content in engaging, interactive formats</li>
+                        <li><strong>Global Perspective:</strong> Covering international IP frameworks and cross-border protection strategies</li>
+                    </ul>
+                `
+            },
+            contact: {
+                title: "Contact Us",
+                content: `
+                    <h3>Get in Touch</h3>
+                    <p>We welcome inquiries, feedback, and collaboration opportunities. Our team is dedicated to providing timely and helpful responses to all communications.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <h4>LinkedIn</h4>
+                            <p>Connect with us professionally on LinkedIn for updates, articles, and networking opportunities.</p>
+                            <a href="https://www.linkedin.com/in/nikhil-kumar-31b914341" class="contact-link" target="_blank">Visit LinkedIn Profile</a>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4>Email</h4>
+                            <p>Send us your queries, suggestions, or requests for educational resources via email.</p>
+                            <a href="mailto:kimitechnology.co.vr@gmail.com" class="contact-link">kimitechnology.co.vr@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <h3>Response Time</h3>
+                    <p>We strive to respond to all inquiries within 2-3 business days. For urgent matters related to IP consultation, please clearly indicate "URGENT" in your subject line.</p>
+                `
+            },
+            legal: {
+                title: "Legal Notice",
+                content: `
+                    <div class="legal-notice-box">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Legal Disclaimer</h3>
+                        <p><strong>Must be included exactly as specified:</strong></p>
+                        <p>The information provided by GIPA is for general informational and educational purposes only and does not constitute professional legal advice. While we strive to provide accurate and up-to-date information regarding international Intellectual Property laws, laws are subject to change and vary by jurisdiction.</p>
+                        <p>Use of this website does not create an attorney-client relationship. For specific legal issues, we recommend consulting with a registered IP professional through our official consultation channels. Kimi Technologies and DVNKC Inc. shall not be held liable for any actions taken based on the information provided on this platform.</p>
+                    </div>
+                    
+                    <h3>Purpose of Information</h3>
+                    <p>All content on the GIPA platform is intended for educational purposes only. The information provided should not be relied upon as legal advice or as a substitute for consultation with qualified legal counsel familiar with your specific circumstances.</p>
+                `
+            },
+            privacy: {
+                title: "Privacy Policy",
+                content: `
+                    <h3>Our Commitment to Privacy</h3>
+                    <p>GIPA is committed to protecting the privacy and security of our users' personal information. This Privacy Policy outlines our practices regarding data collection, use, and protection.</p>
+                    
+                    <h3>Data Collection Principles</h3>
+                    <p>We adhere to the following principles in all our data collection activities:</p>
+                    <ul>
+                        <li><strong>Transparency:</strong> We clearly communicate what data we collect and why</li>
+                        <li><strong>Minimization:</strong> We only collect data necessary for our educational purposes</li>
+                        <li><strong>Security:</strong> We implement appropriate technical and organizational measures to protect your data</li>
+                        <li><strong>Control:</strong> We provide users with control over their personal information</li>
+                    </ul>
+                `
+            },
+            terms: {
+                title: "Terms & Conditions",
+                content: `
+                    <h3>Acceptance of Terms</h3>
+                    <p>By accessing and using the GIPA website, you accept and agree to be bound by these Terms & Conditions. If you do not agree with any part of these terms, you must not use our website.</p>
+                    
+                    <h3>Website Usage Rules</h3>
+                    <p>Users agree to:</p>
+                    <ul>
+                        <li>Use the website only for lawful purposes</li>
+                        <li>Not attempt to gain unauthorized access to any part of the website</li>
+                        <li>Not interfere with or disrupt the website or servers</li>
+                        <li>Not use the website to transmit any harmful or malicious content</li>
+                        <li>Respect the intellectual property rights of GIPA and third parties</li>
+                    </ul>
+                `
+            },
+            copyright: {
+                title: "Copyright Notice",
+                content: `
+                    <div class="copyright-notice-box">
+                        <h3><i class="fas fa-copyright"></i> Mandatory Copyright Notice</h3>
+                        <p><strong>Must be included exactly as specified:</strong></p>
+                        <p>All content included on this website, such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, is the exclusive property of Kimi Technologies / DVNKC Inc. or its content suppliers and is protected by international copyright and intellectual property laws.</p>
+                        <p>The trademark GIPA (Global Intellectual Property Advisor), including its logo and brand identity, is a protected asset. Any unauthorized use, reproduction, modification, or distribution of the materials on this site without express written permission from DVNKC Inc. is strictly prohibited and may lead to legal action.</p>
+                    </div>
+                `
+            },
+            government: {
+                title: "Government Permission",
+                content: `
+                    <h3>Compliance Statement</h3>
+                    <p>GIPA operates in compliance with applicable laws and regulations in the jurisdictions where we provide educational services. We are committed to legal and ethical operations in all our activities.</p>
+                    
+                    <h3>Disclaimer Regarding Governmental Approvals</h3>
+                    <p>GIPA is an educational platform providing information about intellectual property rights. We are not a government agency, regulatory body, or legal authority. Our content should not be construed as official government guidance or approval.</p>
+                `
+            },
+            'content-protection': {
+                title: "Content Protection Guide",
+                content: `
+                    <h3>Copyright Registration</h3>
+                    <p>Copyright registration is the formal process of registering your creative works with a national copyright office. While copyright protection is automatic upon creation of an original work, registration provides important legal benefits:</p>
+                    <ul>
+                        <li><strong>Legal Evidence:</strong> Registration creates a public record of your copyright claim</li>
+                        <li><strong>Statutory Damages:</strong> In many jurisdictions, registration before infringement is required to claim statutory damages and attorney's fees</li>
+                        <li><strong>International Protection:</strong> Registration can facilitate protection in other countries through international treaties</li>
+                        <li><strong>Market Value:</strong> Registered works often have higher perceived value in commercial transactions</li>
+                    </ul>
+                    
+                    <h3>Content ID Setup</h3>
+                    <p>Content ID systems are automated copyright management tools used by platforms like YouTube, Facebook, and SoundCloud. These systems:</p>
+                    <ul>
+                        <li><strong>Scan Uploads:</strong> Automatically compare uploaded content against a database of registered works</li>
+                        <li><strong>Take Action:</strong> Allow copyright owners to block, track, or monetize matching content</li>
+                        <li><strong>Require Qualification:</strong> Typically require a substantial catalog of original works to access</li>
+                        <li><strong>Global Reach:</strong> Operate across multiple jurisdictions and platforms</li>
+                    </ul>
+                    
+                    <h3>DMCA Takedown</h3>
+                    <p>The Digital Millennium Copyright Act (DMCA) provides a process for copyright owners to request removal of infringing content from online platforms. A proper DMCA takedown notice must include:</p>
+                    <ul>
+                        <li><strong>Identification:</strong> Description of the copyrighted work claimed to be infringed</li>
+                        <li><strong>Location:</strong> Identification of the infringing material and its location</li>
+                        <li><strong>Contact Information:</strong> Your contact details including address, phone number, and email</li>
+                        <li><strong>Good Faith Statement:</strong> Statement that you believe the use is not authorized</li>
+                        <li><strong>Accuracy Statement:</strong> Statement that the information in the notification is accurate</li>
+                        <li><strong>Signature:</strong> Physical or electronic signature of the copyright owner or agent</li>
+                    </ul>
+                    
+                    <h3>Licensing Models</h3>
+                    <p>Various licensing models allow creators to control how their works are used:</p>
+                    <ul>
+                        <li><strong>Exclusive License:</strong> Grants rights to only one licensee, preventing even the licensor from using the work</li>
+                        <li><strong>Non-Exclusive License:</strong> Allows multiple licensees to use the work simultaneously</li>
+                        <li><strong>Sole License:</strong> Grants rights to one licensee but allows the licensor to continue using the work</li>
+                        <li><strong>Creative Commons:</strong> Standardized public licenses that allow certain uses without individual negotiation</li>
+                        <li><strong>Royalty-Free:</strong> One-time payment allows unlimited use within specified terms</li>
+                        <li><strong>Rights-Managed:</strong> Specific license terms for each use, often with limitations on duration, territory, and medium</li>
+                    </ul>
+                `
+            },
+            'software-open-source': {
+                title: "Software & Open Source IP Guide",
+                content: `
+                    <h3>License Selection</h3>
+                    <p>Choosing the right software license depends on your goals for distribution, collaboration, and commercialization:</p>
+                    <ul>
+                        <li><strong>MIT License:</strong> Permissive license allowing almost any use with minimal restrictions</li>
+                        <li><strong>GPL (General Public License):</strong> Copyleft license requiring derivative works to use same license</li>
+                        <li><strong>Apache License 2.0:</strong> Permissive with explicit patent grant and contributor license agreements</li>
+                        <li><strong>BSD Licenses:</strong> Family of permissive licenses with varying attribution requirements</li>
+                        <li><strong>LGPL (Lesser GPL):</strong> Allows linking with proprietary software under certain conditions</li>
+                        <li><strong>Proprietary Licenses:</strong> Custom licenses restricting use, modification, and distribution</li>
+                    </ul>
+                    
+                    <h3>Software Patent vs Copyright</h3>
+                    <p>Software can be protected by both patents and copyrights, each with different scopes and requirements:</p>
+                    <table style="width:100%; border-collapse: collapse; margin: 1.5rem 0;">
+                        <tr style="background-color: rgba(45, 90, 160, 0.1);">
+                            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Aspect</th>
+                            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Copyright</th>
+                            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Patent</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Protected Element</strong></td>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Expression (source code, structure)</td>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Functionality, algorithms, methods</td>
+                        </tr>
+                        <tr style="background-color: rgba(0,0,0,0.05);">
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Duration</strong></td>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Author's life + 70 years</td>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">20 years from filing</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Requirements</strong></td>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Originality, fixation</td>
+                            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Novelty, non-obviousness, utility</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>GitHub Best Practices</h3>
+                    <p>When using GitHub for software development, consider these IP protection strategies:</p>
+                    <ul>
+                        <li><strong>License File:</strong> Always include a LICENSE file in your repository root</li>
+                        <li><strong>Contributor Agreements:</strong> Use CLA (Contributor License Agreements) for significant projects</li>
+                        <li><strong>Private Repositories:</strong> Use private repos for proprietary code until ready for release</li>
+                        <li><strong>.gitignore:</strong> Exclude sensitive files like API keys, credentials, and configuration files</li>
+                        <li><strong>Branch Protection:</strong> Require pull request reviews for main branches</li>
+                        <li><strong>DCO (Developer Certificate of Origin):</strong> Implement for open source projects to verify contribution rights</li>
+                    </ul>
+                    
+                    <h3>Trade Secret Protection for Software</h3>
+                    <p>Some software elements are better protected as trade secrets than through patents or copyrights:</p>
+                    <ul>
+                        <li><strong>Algorithms:</strong> Proprietary algorithms that provide competitive advantage</li>
+                        <li><strong>Source Code:</strong> Unpublished source code of proprietary applications</li>
+                        <li><strong>Architecture:</strong> System architecture and design patterns</li>
+                        <li><strong>Business Logic:</strong> Unique business rules and processing logic</li>
+                        <li><strong>Protection Requirements:</strong> Must be kept secret, have commercial value, and subject to reasonable protection measures</li>
+                    </ul>
+                `
+            },
+            'brand-security': {
+                title: "Brand Security Guide",
+                content: `
+                    <h3>Trademark Search</h3>
+                    <p>Conducting a comprehensive trademark search is crucial before adopting a new brand:</p>
+                    <ul>
+                        <li><strong>Direct Hits:</strong> Search for identical marks in same classes</li>
+                        <li><strong>Similarity Search:</strong> Look for phonetically, visually, or conceptually similar marks</li>
+                        <li><strong>International Search:</strong> Check WIPO's Global Brand Database for international registrations</li>
+                        <li><strong>Common Law Search:</strong> Search for unregistered marks in business directories and online</li>
+                        <li><strong>Domain Search:</strong> Check availability of corresponding domain names</li>
+                        <li><strong>Social Media:</strong> Search for usernames on major social platforms</li>
+                    </ul>
+                    
+                    <h3>The "TM" vs "®" Rule</h3>
+                    <p>Understanding when to use trademark symbols is important for proper brand protection:</p>
+                    <ul>
+                        <li><strong>™ Symbol:</strong> Can be used with any unregistered mark to claim trademark rights</li>
+                        <li><strong>® Symbol:</strong> Can only be used after official registration with a national trademark office</li>
+                        <li><strong>Legal Implications:</strong> Improper use of ® for unregistered marks can constitute fraud</li>
+                        <li><strong>Placement:</strong> Typically placed in superscript after the mark (e.g., BRAND™ or BRAND®)</li>
+                        <li><strong>International Variation:</strong> Some countries use different symbols (e.g., "Marca Registrada" in Spanish)</li>
+                    </ul>
+                    
+                    <h3>Class Selection</h3>
+                    <p>The Nice Classification system organizes goods and services into 45 classes for trademark registration:</p>
+                    <ul>
+                        <li><strong>Classes 1-34:</strong> Goods (products)</li>
+                        <li><strong>Classes 35-45:</strong> Services</li>
+                        <li><strong>Key Classes:</strong>
+                            <ul>
+                                <li><strong>Class 9:</strong> Software, electronics, downloadable media</li>
+                                <li><strong>Class 25:</strong> Clothing, footwear, headgear</li>
+                                <li><strong>Class 35:</strong> Advertising, business management, retail services</li>
+                                <li><strong>Class 41:</strong> Education, entertainment, cultural activities</li>
+                                <li><strong>Class 42:</strong> Scientific and technological services</li>
+                            </ul>
+                        </li>
+                        <li><strong>Multi-Class Applications:</strong> Most jurisdictions allow filing in multiple classes with additional fees</li>
+                    </ul>
+                    
+                    <h3>Geographical Indication (GI)</h3>
+                    <p>Geographical Indications protect products with specific geographical origins and qualities:</p>
+                    <ul>
+                        <li><strong>Definition:</strong> Signs used on products with specific geographical origin and qualities/reputation due to that origin</li>
+                        <li><strong>Examples:</strong> Champagne (France), Parmigiano Reggiano (Italy), Darjeeling Tea (India)</li>
+                        <li><strong>Protection:</strong> Prevents misuse of the geographical name by producers outside the region</li>
+                        <li><strong>Registration:</strong> Typically requires proof of link between product qualities and geographical origin</li>
+                        <li><strong>International Protection:</strong> Protected through Lisbon Agreement and TRIPS Agreement</li>
+                    </ul>
+                `
+            }
+        };
+
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Mobile Navigation Toggle
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+            
+            // Toggle hamburger icon
+            if (navMenu.classList.contains('active')) {
+                navToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            searchResults.innerHTML = '';
+            
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+            
+            // Filter search results
+            const filteredResults = searchData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.content.toLowerCase().includes(query)
+            );
+            
+            if (filteredResults.length === 0) {
+                searchResults.innerHTML = '<div class="search-result-item"><p>No results found. Try different keywords.</p></div>';
+            } else {
+                filteredResults.forEach(result => {
+                    const resultElement = document.createElement('div');
+                    resultElement.className = 'search-result-item';
+                    resultElement.innerHTML = `
+                        <h4>${highlightText(result.title, query)}</h4>
+                        <p>${highlightText(result.content.substring(0, 100) + '...', query)}</p>
+                        <span class="result-type">${result.type}</span>
+                    `;
+                    resultElement.addEventListener('click', () => {
+                        if (result.modal === 'calculator') {
+                            openCalculator();
+                        } else if (result.modal) {
+                            openModal(result.modal);
+                        }
+                        searchInput.value = '';
+                        searchResults.classList.remove('active');
+                    });
+                    searchResults.appendChild(resultElement);
+                });
+            }
+            
+            searchResults.classList.add('active');
+        });
+        
+        // Highlight search terms in text
+        function highlightText(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+        
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+        
+        // Modal functionality
+        linkCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalType = card.getAttribute('data-modal');
+                openModal(modalType);
+            });
+        });
+        
+        // Page link functionality
+        pageLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const modalType = link.getAttribute('data-modal');
+                openModal(modalType);
+            });
+        });
+        
+        // Also make footer links open modals
+        document.querySelectorAll('a[data-modal]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalType = link.getAttribute('data-modal');
+                openModal(modalType);
+            });
+        });
+        
+        function openModal(modalType) {
+            if (modalContents[modalType]) {
+                modal.innerHTML = `
+                    <div class="modal-header">
+                        <h2>${modalContents[modalType].title}</h2>
+                        <button class="modal-close" aria-label="Close modal">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-content">
+                        ${modalContents[modalType].content}
+                    </div>
+                `;
+                
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                
+                // Add event listener to close button
+                const closeBtn = modal.querySelector('.modal-close');
+                closeBtn.addEventListener('click', closeModal);
+            }
+        }
+        
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // Fee Calculator functionality
+        calculatorToggle.addEventListener('click', () => {
+            calculatorModal.classList.toggle('active');
+            calculatorToggle.classList.toggle('active');
+        });
+        
+        calculatorClose.addEventListener('click', () => {
+            calculatorModal.classList.remove('active');
+            calculatorToggle.classList.remove('active');
+        });
+        
+        calculateFeesBtn.addEventListener('click', () => {
+            const country = document.getElementById('countrySelect').value;
+            const ipType = document.getElementById('ipTypeSelect').value;
+            const applicantType = document.getElementById('applicantType').value;
+            
+            if (feeData[country] && feeData[country][ipType]) {
+                const fee = feeData[country][ipType][applicantType];
+                const countryNames = {
+                    us: 'United States', eu: 'European Union', uk: 'United Kingdom',
+                    in: 'India', ca: 'Canada', au: 'Australia', jp: 'Japan',
+                    cn: 'China', kr: 'South Korea', br: 'Brazil'
+                };
+                const ipTypeNames = {
+                    trademark: 'Trademark Registration',
+                    patent: 'Patent Application',
+                    design: 'Design Registration',
+                    copyright: 'Copyright Registration'
+                };
+                
+                document.getElementById('feeAmount').textContent = `$${fee}`;
+                document.getElementById('feeDetails').textContent = 
+                    `${ipTypeNames[ipType]} for ${applicantType} in ${countryNames[country]}`;
+                
+                // Create fee breakdown
+                let breakdown = '<h4>Fee Breakdown:</h4>';
+                if (ipType === 'trademark') {
+                    breakdown += `
+                        <div class="fee-item"><span>Filing Fee:</span><span>$ ${fee * 0.6}</span></div>
+                        <div class="fee-item"><span>Examination Fee:</span><span>$ ${fee * 0.3}</span></div>
+                        <div class="fee-item"><span>Registration Fee:</span><span>$ ${fee * 0.1}</span></div>
+                    `;
+                } else if (ipType === 'patent') {
+                    breakdown += `
+                        <div class="fee-item"><span>Filing Fee:</span><span>$ ${fee * 0.4}</span></div>
+                        <div class="fee-item"><span>Search Fee:</span><span>$ ${fee * 0.3}</span></div>
+                        <div class="fee-item"><span>Examination Fee:</span><span>$ ${fee * 0.2}</span></div>
+                        <div class="fee-item"><span>Grant Fee:</span><span>$ ${fee * 0.1}</span></div>
+                    `;
+                }
+                
+                document.getElementById('feeBreakdown').innerHTML = breakdown;
+                calculatorResult.style.display = 'block';
+                
+                // Scroll to result
+                calculatorResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                document.getElementById('feeAmount').textContent = 'N/A';
+                document.getElementById('feeDetails').textContent = 'Fee information not available for this selection';
+                calculatorResult.style.display = 'block';
+            }
+        });
+        
+        function openCalculator() {
+            calculatorModal.classList.add('active');
+            calculatorToggle.classList.add('active');
+        }
+        
+        // Add fade-in animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements to animate
+        document.querySelectorAll('.category-card, .link-card, .page-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Initialize page with fade-in effect
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = 0;
+            document.body.style.transition = 'opacity 0.5s';
+            
+            setTimeout(() => {
+                document.body.style.opacity = 1;
+            }, 100);
+        });
+    </script>
+</body>
+</html>
